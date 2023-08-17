@@ -33,29 +33,28 @@ var minCostClimbingStairs = function (cost) {
 
 // console.log(minCostClimbingStairs([1, 100, 1, 1, 1, 100, 1, 1, 100, 1]));
 
-var minInsertions = function(s) {
-  let dp = Array(501)
-  for(let i  = 0; i < dp.length; i++) {
-    dp[i] = Array(501).fill(-1)
+var minInsertions = function (s) {
+  let dp = Array(501);
+  for (let i = 0; i < dp.length; i++) {
+    dp[i] = Array(501).fill(-1);
   }
 
-  return solve(0,s.length -1,s,dp) 
+  return solve(0, s.length - 1, s, dp);
 
-  function solve(start,end,str,t) {
-    if(start >= end) return 0
+  function solve(start, end, str, t) {
+    if (start >= end) return 0;
 
-    if(t[start][end] !== -1) return t[start][end]
-    if(str[start] === str[end]) return t[start][end] = solve(start + 1, end - 1,str,dp)
+    if (t[start][end] !== -1) return t[start][end];
+    if (str[start] === str[end])
+      return (t[start][end] = solve(start + 1, end - 1, str, dp));
     else {
-      let left = solve(start,end - 1,str,t) 
-      let right = solve(start + 1,end,str,t) 
-      t[start][end] = Math.min(left,right)  + 1
+      let left = solve(start, end - 1, str, t);
+      let right = solve(start + 1, end, str, t);
+      t[start][end] = Math.min(left, right) + 1;
     }
     // console.log(dp[start][end])
-    return  dp[start][end]
+    return dp[start][end];
   }
+};
 
-  
-}
-
-console.log(minInsertions("leetcode"))
+console.log(minInsertions("leetcode"));

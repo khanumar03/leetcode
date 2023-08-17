@@ -393,19 +393,19 @@ var spiralOrder = function (matrix) {
   let clockwise = [
     [1, 0],
     [0, 1],
-    [-1,0],
-    [0,-1],
+    [-1, 0],
+    [0, -1],
   ];
-  let direction = ["right","down","left","up"]
+  let direction = ["right", "down", "left", "up"];
   dfs(0, 0, visited, clockwise, 0);
 
   return sm;
 
   function dfs(r, c, vis, cw, check) {
     if (vis[r][c]) {
-      dfs
-      return 
-    };
+      dfs;
+      return;
+    }
     vis[r][c] = true;
     let [x, y] = cw[check];
     if (r + x < 0 || c + y < 0 || r + x >= row || c + y >= col) {
@@ -422,4 +422,27 @@ let spm = [
   [7, 8, 9],
 ];
 
-console.log(spiralOrder(spm));
+// console.log(spiralOrder(spm));
+
+var searchMatrix = function (matrix, target) {
+  let l = 0;
+  let r = matrix.length - 1;
+
+  while (l <= r) {
+    let mid = Math.floor(r + (l - r) / 2);
+
+    if (matrix[mid].includes(target)) return true;
+
+    if (matrix[mid][0] > target) r = mid - 1;
+    else l = mid + 1;
+  }
+
+  return false;
+};
+
+const matrix = [
+  [1, 3, 5, 7],
+  [10, 11, 16, 20],
+  [23, 30, 34, 60],
+];
+console.log(searchMatrix(matrix, 60));
