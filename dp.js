@@ -122,8 +122,6 @@ var maxUncrossedLines = function (nums1, nums2) {
 let nums1 = [2, 5, 1, 2, 5];
 let nums2 = [10, 5, 2, 1, 5, 2];
 
-// console.log(maxUncrossedLines(nums1, nums2));
-
 var mostPoints = function (questions) {
   let dp = Array(questions.length).fill(-1);
 
